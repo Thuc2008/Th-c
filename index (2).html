@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thử thách hack não!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Rubik', sans-serif;
+    }
+    body {
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: white;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2.5em;
+    }
+    .quiz-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+      animation: fadeIn 1s ease-in-out;
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+    .question h2 {
+      font-size: 1.3em;
+      margin-bottom: 10px;
+    }
+    .options label {
+      display: block;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      margin: 5px 0;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .options label:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    button {
+      display: block;
+      margin: 20px auto;
+      padding: 15px 30px;
+      background: #00ffc3;
+      border: none;
+      border-radius: 30px;
+      font-size: 1em;
+      color: #000;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    button:hover {
+      transform: scale(1.1);
+    }
+    .result {
+      text-align: center;
+      font-size: 1.5em;
+      margin-top: 20px;
+      display: none;
+    }
+    .reward {
+      display: none;
+      margin-top: 30px;
+      text-align: center;
+      font-size: 2em;
+      color: #00ffcc;
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <h1>Thử Thách Hack Não - Làm Được Sẽ Có Quà 🎁</h1>
+  <div class="quiz-container">
+    <form id="quizForm">
+
+<!-- Câu hỏi -->
+      <div class="question">
+        <h2>1. Nếu 1 = 5, 2 = 25, 3 = 325, 4 = 4325 thì 5 = ?</h2>
+        <div class="options">
+          <label><input type="radio" name="q1" value="a"> 54325</label>
+          <label><input type="radio" name="q1" value="b"> 1</label>
+          <label><input type="radio" name="q1" value="c"> 5325</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <h2>2. Có 3 quả táo, bạn lấy đi 2 quả. Hỏi bạn có mấy quả?</h2>
+        <div class="options">
+          <label><input type="radio" name="q2" value="a"> 3</label>
+          <label><input type="radio" name="q2" value="b"> 2</label>
+          <label><input type="radio" name="q2" value="c"> 1</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <h2>3. Cái gì càng lấy đi càng lớn?</h2>
+        <div class="options">
+          <label><input type="radio" name="q3" value="a"> Lỗ hổng</label>
+          <label><input type="radio" name="q3" value="b"> Tình yêu</label>
+          <label><input type="radio" name="q3" value="c"> Cái giếng</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <h2>4. Một người phụ nữ sinh ra 2 đứa con cùng ngày cùng tháng cùng năm nhưng không phải sinh đôi. Hỏi sao?</h2>
+        <div class="options">
+          <label><input type="radio" name="q4" value="a"> Sinh ba</label>
+          <label><input type="radio" name="q4" value="b"> Nhận nuôi</label>
+          <label><input type="radio" name="q4" value="c"> Trùng hợp</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <h2>5. Đố bạn: Con gì đầu dê mình ốc?</h2>
+        <div class="options">
+          <label><input type="radio" name="q5" value="a"> Con dốc</label>
+          <label><input type="radio" name="q5" value="b"> Con ngao</label>
+          <label><input type="radio" name="q5" value="c"> Con rốc</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <h2>6. Tháng nào có 28 ngày?</h2>
+        <div class="options">
+          <label><input type="radio" name="q6" value="a"> Tháng 2</label>
+          <label><input type="radio" name="q6" value="b"> Tất cả các tháng</label>
+          <label><input type="radio" name="q6" value="c"> Tháng chẵn</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <h2>7. Một số có 2 chữ số, tổng là 9. Nếu đổi chỗ các chữ số thì số đó tăng thêm 27. Số đó là?</h2>
+        <div class="options">
+          <label><input type="radio" name="q7" value="a"> 36</label>
+          <label><input type="radio" name="q7" value="b"> 45</label>
+          <label><input type="radio" name="q7" value="c"> 63</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <h2>8. Cái gì càng giặt càng bẩn?</h2>
+        <div class="options">
+          <label><input type="radio" name="q8" value="a"> Cục đất</label>
+          <label><input type="radio" name="q8" value="b"> Nước</label>
+          <label><input type="radio" name="q8" value="c"> Cái nước giặt</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <h2>9. Tôi có 4 cái chân, nhưng không biết đi là gì?</h2>
+        <div class="options">
+          <label><input type="radio" name="q9" value="a"> Ghế</label>
+          <label><input type="radio" name="q9" value="b"> Người què</label>
+          <label><input type="radio" name="q9" value="c"> Con rối</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <h2>10. Từ nào trong tiếng Việt vừa là tính từ vừa là danh từ?</h2>
+        <div class="options">
+          <label><input type="radio" name="q10" value="a"> Đẹp</label>
+          <label><input type="radio" name="q10" value="b"> Hay</label>
+          <label><input type="radio" name="q10" value="c"> Giỏi</label>
+        </div>
+      </div>
+
+      <button type="button" onclick="submitQuiz()">Nộp bài</button>
+    </form>
+
+    <div class="result" id="result"></div>
+    <div class="reward" id="reward">🎉 Bạn quá đỉnh! Quà sẽ được trao! 🎁</div>
+  </div>
+
+<script>
+  const answers = {
+    q1: 'b',
+    q2: 'b',
+    q3: 'a',
+    q4: 'a',
+    q5: 'a',
+    q6: 'b',
+    q7: 'a',
+    q8: 'c',
+    q9: 'a',
+    q10: 'b'
+  };
+
+  // Nhạc chúc mừng
+  const winMusic = new Audio("https://cdn.pixabay.com/download/audio/2022/03/15/audio_4c124c53a1.mp3?filename=epic-win-2-158121.mp3");
+  winMusic.volume = 0.4;
+
+  function createConfetti() {
+    const confetti = document.createElement('canvas');
+    confetti.id = 'confettiCanvas';
+    confetti.style.position = 'fixed';
+    confetti.style.top = 0;
+    confetti.style.left = 0;
+    confetti.style.width = '100vw';
+    confetti.style.height = '100vh';
+    confetti.style.pointerEvents = 'none';
+    confetti.style.zIndex = 9999;
+    document.body.appendChild(confetti);
+
+    const jsConfetti = new JSConfetti();
+    jsConfetti.addConfetti({
+      emojis: ['🎉', '✨', '🎁', '🎊'],
+      emojiSize: 40,
+      confettiNumber: 200
+    });
+  }
+
+  function typeWriterEffect(text, targetId) {
+    const el = document.getElementById(targetId);
+    el.textContent = '';
+    let i = 0;
+    const speed = 50;
+
+    function type() {
+      if (i < text.length) {
+        el.textContent += text.charAt(i);
+        i++;
+        setTimeout(type, speed);
+      }
+    }
+    type();
+  }
+
+  function submitQuiz() {
+    let score = 0;
+    for (let i = 1; i <= 10; i++) {
+      const selected = document.querySelector(`input[name="q${i}"]:checked`);
+      if (selected && selected.value === answers[`q${i}`]) {
+        score++;
+      }
+    }
+
+    const result = document.getElementById("result");
+    const reward = document.getElementById("reward");
+
+    result.style.display = "block";
+    reward.style.display = "none";
+
+    if (score >= 7) {
+      typeWriterEffect(`Xuất sắc! Bạn đúng ${score}/10 câu 🎉🎊🎁`, 'result');
+      reward.style.display = "block";
+      reward.textContent = "🎉 Tuyệt ,quà sẽ được trao 🎁";
+      createConfetti();
+      winMusic.play();
+    } else {
+      typeWriterEffect(`Bạn đúng ${score}/10 câu. Đừng nản lòng! Hãy thử lại 💪`, 'result');
+    }
+  }
+
+  // Thêm thư viện confetti
+  const script = document.createElement('script');
+  script.src = "https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js";
+  document.head.appendChild(script);
+</script>
+</body>
+</html>
