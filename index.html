@@ -32,11 +32,11 @@ body{
 </style>
 </head>
 <body>
-<div class="coin" id="coin">Ngửa</div>
+<div class="coin" id="coin">Toán</div>
 <script>
 let coin=document.getElementById("coin");
 coin.onclick=()=>{
-  let res=Math.random()<0.5?"Ngửa":"Sấp";
+  let res=Math.random()<0.5?"Toán":"Lý";
   coin.style.transform="rotateY(720deg)";
   setTimeout(()=>{
     coin.textContent=res;
