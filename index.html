@@ -1,40 +1,175 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<title>Tung đồng xu</title>
-<style>
-body{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  height:100vh;
-  margin:0;
-  background:#0f1724;
-  font-family:sans-serif;
-}
-.coin{
-  width:160px;
-  height:160px;
-  border-radius:50%;
-  background:radial-gradient(circle at 30% 30%, #fff9c4, #f7b500);
-  box-shadow:0 0 25px rgba(0,0,0,0.6);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:26px;
-  font-weight:bold;
-  color:#222;
-  cursor:pointer;
-  transition:transform 1s;
-  backface-visibility:hidden;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lì Xì Đầu Năm</title>
+    <style>
+        :root {
+            --red-tet: #d32f2f;
+            --gold: #ffeb3b;
+        }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #fce4ec;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        h1 { color: var(--red-tet); margin-bottom: 40px; text-shadow: 1px 1px 0px #fff; }
+        
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 110px);
+            gap: 25px;
+        }
+
+        .lixi-card {
+            aspect-ratio: 2/3;
+            background-color: var(--red-tet);
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.2s ease-out;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            border: 3px solid var(--gold);
+        }
+
+        .lixi-card:active { transform: scale(0.9); }
+
+        .lixi-card::before { content: "🧧"; font-size: 3rem; }
+
+        .lixi-card.opened {
+            background-color: #fff;
+            transform: rotateY(180deg);
+            cursor: default;
+        }
+
+        .lixi-content {
+            position: absolute;
+            width: 100%; height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.1rem;
+            color: var(--red-tet);
+            font-weight: bold;
+            text-align: center;
+            padding: 10px;
+            box-sizing: border-box;
+            opacity: 0;
+            transform: rotateY(180deg);
+        }
+
+        .lixi-card.opened .lixi-content { opacity: 1; }
+        .lixi-card.opened::before { display: none; }
+
+        /* MÀN HÌNH HÙ CỰC MẠNH */
+        #scare-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        #scare-overlay h2 { 
+            font-size: 5rem; 
+            text-align: center;
+            line-height: 1;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .strobe-active {
+            animation: strobe 0.04s infinite, shake 0.04s infinite;
+        }
+
+        @keyframes strobe {
+            0% { background-color: #ff0000; color: #fff; }
+            33% { background-color: #000; color: #ff0000; }
+            66% { background-color: #fff; color: #000; }
+        }
+
+        @keyframes shake {
+            0% { transform: translate(15px, 15px) rotate(2deg); }
+            50% { transform: translate(-15px, -15px) rotate(-2deg); }
+            100% { transform: translate(15px, -15px) rotate(2deg); }
+        }
+    </style>
 </head>
 <body>
-<div class="coin" id="coin">Toán</div>
-<script>
-let coin=document.getElementById("coin");
+
+    <h1>🧧 CHỌN LÌ XÌ MAY MẮN 🧧</h1>
+
+    <div class="grid-container" id="lixiGrid"></div>
+
+    <div id="scare-overlay">
+        <h2>THAM THẾ!!<br>CỨ THÍCH BẤM À?</h2>
+        <audio id="airhorn" src="https://www.myinstants.com/media/sounds/mlg-airhorn.mp3"></audio>
+    </div>
+
+    <script>
+        // 3 bao: 1 cái 20k, 2 cái đuổi
+        const prizes = ["20.000 VNĐ", "Đừng mở nữa!", "Hết tiền rồi!"];
+        const grid = document.getElementById('lixiGrid');
+        const scareOverlay = document.getElementById('scare-overlay');
+        const airhorn = document.getElementById('airhorn');
+        let clickCount = 0;
+
+        // Trộn ngẫu nhiên
+        const shuffled = [...prizes].sort(() => Math.random() - 0.5);
+
+        for (let i = 0; i < 3; i++) {
+            const card = document.createElement('div');
+            card.className = 'lixi-card';
+            
+            const content = document.createElement('div');
+            content.className = 'lixi-content';
+            content.innerText = shuffled[i];
+            
+            card.appendChild(content);
+            card.addEventListener('click', function() {
+                if (!this.classList.contains('opened')) {
+                    this.classList.add('opened');
+                    clickCount++;
+
+                    // Mở đến cái thứ 2 là bị hù ngay
+                    if (clickCount >= 2) {
+                        setTimeout(triggerScare, 400); // Đợi lật bao xong là hù
+                    }
+                }
+            });
+            grid.appendChild(card);
+        }
+
+        function triggerScare() {
+            scareOverlay.style.display = 'flex';
+            scareOverlay.classList.add('strobe-active');
+            airhorn.currentTime = 0;
+            airhorn.play().catch(() => {
+                console.log("Browser blocked sound. Need user interaction.");
+            });
+            
+            // Hù trong 2.5 giây
+            setTimeout(() => {
+                scareOverlay.style.display = 'none';
+                scareOverlay.classList.remove('strobe-active');
+                alert("Năm mới vui vẻ! Bớt tham nha bạn hiền! 😂");
+            }, 2500);
+        }
+    </script>
+</body>
+</html>let coin=document.getElementById("coin");
 coin.onclick=()=>{
   let res=Math.random()<0.5?"Toán":"Lý";
   coin.style.transform="rotateY(720deg)";
