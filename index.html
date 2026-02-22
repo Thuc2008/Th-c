@@ -1,183 +1,546 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lì Xì Đầu Năm</title>
-    <style>
-        :root {
-            --red-tet: #d32f2f;
-            --gold: #ffeb3b;
-        }
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background-color: #fce4ec;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            margin: 0;
-            overflow: hidden;
-        }
-        h1 { color: var(--red-tet); margin-bottom: 40px; text-shadow: 1px 1px 0px #fff; }
-        
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(3, 110px);
-            gap: 25px;
-        }
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Nhóm 2 báo tường 20/11</title>
+	<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+	<style>
+		body {
+			color:white;
+			text-align:center;
+			margin:0;
+			background-color: #F2E5D0;
+		}
 
-        .lixi-card {
-            aspect-ratio: 2/3;
-            background-color: var(--red-tet);
-            border-radius: 12px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+		header h1 {
+			position:absolute;
+			z-index:2;
+			font-family:Dancing Script;
+			font-size:100px;font-weight:200;
+		}
+		.e {position:absolute;z-index:2;font-size:30px;font-family:Segoe UI;margin-top:200px;}
+		header {
+			border-bottom:2px solid yellow;
+			overflow:hidden;
+			height:100vh;
+			width:100vw;
+			position:relative;
+			display:flex;
+			justify-content:center;
+			align-items:center;
+			background:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),
+			url("https://cdn-media.sforum.vn/storage/app/media/giakhanh/background%2020%2011/background-20-11-1.jpg");
+			background-size:cover;
+			background-position:center;
+
+		}
+		.icon {
+			position:absolute;
+			z-index:1;top:-25px;font-size:25px;
+			animation:fall linear forwards;
+		}
+		@keyframes fall {
+		    to{
+		    	transform:translateY(120vh) rotate(180deg);
+		    }
+		}
+		.khungloingo {
+			padding:20px;
+			background-color:#FFF5F8;
+			width:100%;
+		}
+		.chuloingo {
+			color:#8B3A3A;
+			font-family:Dancing Script;
+			font-size:50px;
+			text-align:center;
+			margin-bottom:20px;
+		}
+		.vetmauloingo {
+			margin:auto;
+			background:linear-gradient(to right,white,#E27D60,white);
+			height:3px;width:130px;
+			margin-bottom:50px;
+		}
+		.khungchuloingo {
+			color:#4A3F35;
+			font-size:20px;
+   			padding:50px 70px;
+			text-align:center;
+			line-height:1.8;font-family: Segoe UI;
+			margin:auto;
+			width:55vw;
+			background-color:#FFFFFF;
+			border-radius:10px;
+			border:1px solid #F3CFCF;
+			box-shadow:0 5px 15px rgba(0,0,0,0.15);
+		}
+		.chuki {
+			text-align:right;
+			margin-top:30px;margin-bottom:-10px;
+			color:black;
+			font-size:30px;
+			font-family:Dancing Script;
+		}
+		.khungkiniem {
+			width:100%;
+			padding:20px;
+			background-color:#F0F8FF;
+		}
+		.chukiniem {
+			color:#1E3A5F;
+			font-family:Dancing Script;
+			font-size:50px;
+			text-align:center;
+			margin-bottom:20px;
+		}
+		.vetmaukiniem {
+			margin:auto;
+			background:linear-gradient(to right,white,#5DADE2,white);
+			height:3px;width:130px;
+			margin-bottom:50px;
+		}
+		.theanh {
+			background-color:#F0F8FF;
+            width: 200px;
+            height: 300px;
+            perspective: 1000px;
             cursor: pointer;
-            position: relative;
-            transition: transform 0.2s ease-out;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-            border: 3px solid var(--gold);
-        }
-
-        .lixi-card:active { transform: scale(0.9); }
-
-        .lixi-card::before { content: "🧧"; font-size: 3rem; }
-
-        .lixi-card.opened {
-            background-color: #fff;
-            transform: rotateY(180deg);
-            cursor: default;
-        }
-
-        .lixi-content {
-            position: absolute;
-            width: 100%; height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.1rem;
-            color: var(--red-tet);
-            font-weight: bold;
-            text-align: center;
+            margin:auto;
+            margin-bottom:30px;
+		}
+		.thexoay {
+			display:flex;
+			justify-content:center;
+			align-items:center;
+			position:relative;
+			transition:transform 0.8s;
+			transform-style:preserve-3d;
+			width:100%;height:100%;
+			box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+		}
+		.theanh.xoay .thexoay {
+			transform:rotateY(180deg);
+		}
+		.truoc,.sau {
+			display:flex;
+			justify-content:center;
+			align-items:center;
+			border-radius:5px;
+			backface-visibility:hidden;
+			width:100%;height:100%;
+			overflow:hidden;
+			position:absolute;
+		}
+		.truoc img {width:100%;height:100%;}
+		.truoc {border:10px solid white;}
+		.sau {font-family:Indie Flower;background-color: #FFE5D9;transform:rotateY(180deg);color:black;}
+		.khungchia {display:flex;flex-wrap:wrap;gap:33px;padding:80px;margin:auto;margin-top:-60px;}
+		.khungbangloinhan {
+			background-color:#F2E5D0;
+			width:100%;
+			padding:20px;
+		}
+		.chubangloinhan {
+			color:#8B4513;
+			font-family:Dancing Script;
+			font-size:50px;
+			text-align:center;
+			margin-bottom:20px;
+		}
+		.vetmaubangloinhan {
+			margin:auto;
+			background:linear-gradient(to right,#F2E5D0,#D97D26,#F2E5D0);
+			height:3px;width:130px;
+			margin-bottom:50px;
+		}
+		.khunggo {
+			background: #E6C79C;
+			margin:50px;
+            border-radius:10px;
+            border:8px solid #4A1F08;
+		}
+		.khungchia2 {display:flex;flex-wrap:wrap;gap:5px;}
+		.togiay {
+			transition:0.3s;
+			box-shadow:0 5px 15px rgba(0,0,0,0.15);
+			margin:20px;
+            padding:20px;
+            font-family:Indie Flower;
+            font-size:14px;color:black;
+            margin-top:30px;
+            height:140px;
+            width:160px;
+            display:flex;
+            justify-content:center;
+            position:relative;
+		}
+		.togiay:hover {transform:scale(1.25);}
+		.ghim {
+			background-color:#EF6F6C;
+            position:absolute;
+            height: 14px;
+            width: 14px;
+            border-radius:50%;
+            top:-7px;
+            border:3px solid #990000;
+		}
+		.khungten {
+			border-top:1px solid #9C9C9C;
+            position:absolute;
+            bottom:10px;
             padding: 10px;
-            box-sizing: border-box;
-            opacity: 0;
-            transform: rotateY(180deg);
-        }
+            font-family: Segoe UI;
+            font-weight: 400;
+		}
+		footer {
+			margin-top:100px;
+		    position: relative;
+		    overflow: hidden;
+		    background: linear-gradient(to right, #8B0000, #C62828);
+		    color: white;
+		    padding: 40px 20px;
+		    text-align: center;
+		    border-top: 4px solid #FFD700;
+		}
 
-        .lixi-card.opened .lixi-content { opacity: 1; }
-        .lixi-card.opened::before { display: none; }
+		.footer-container {
+		    max-width: 1000px;
+		    margin: auto;
+		}
 
-        /* MÀN HÌNH HÙ CỰC MẠNH */
-        #scare-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-        }
+		.footer-title {
+		    font-family: Dancing Script;
+		    font-size: 40px;
+		    margin-bottom: 15px;
+		}
 
-        #scare-overlay h2 { 
-            font-size: 5rem; 
-            text-align: center;
-            line-height: 1;
-            margin: 0;
-            padding: 20px;
-        }
+		.footer-line {
+		    width: 120px;
+		    height: 3px;
+		    background: #FFD700;
+		    margin: 10px auto 30px;
+		}
 
-        .strobe-active {
-            animation: strobe 0.04s infinite, shake 0.04s infinite;
-        }
+		.footer-content {
+		    font-family: Segoe UI;
+		    font-size: 16px;
+		    line-height: 1.8;
+		}
 
-        @keyframes strobe {
-            0% { background-color: #ff0000; color: #fff; }
-            33% { background-color: #000; color: #ff0000; }
-            66% { background-color: #fff; color: #000; }
-        }
+		.footer-update {
+		    margin-top: 25px;
+		    font-size: 14px;
+		    opacity: 0.85;
+		}
 
-        @keyframes shake {
-            0% { transform: translate(15px, 15px) rotate(2deg); }
-            50% { transform: translate(-15px, -15px) rotate(-2deg); }
-            100% { transform: translate(15px, -15px) rotate(2deg); }
-        }
-    </style>
+		@media (max-width: 768px) {
+		    .footer-title {
+		        font-size: 28px;
+		    }
+		}
+		footer::before {
+		    content: "";
+		    position: absolute;
+		    top: 0;
+		    left: -100%;
+		    width: 50%;
+		    height: 100%;
+		    background: linear-gradient(
+		        120deg,
+		        rgba(255,255,255,0) 0%,
+		        rgba(255,255,255,0.4) 50%,
+		        rgba(255,255,255,0) 100%
+		    );
+		    transform: skewX(-25deg);
+		    animation: shine 6s infinite;
+		}
+
+		@keyframes shine {
+		    0% {
+		        left: -100%;
+		    }
+		    100% {
+		        left: 150%;
+		    }
+		}
+	</style>
 </head>
 <body>
 
-    <h1>🧧 CHỌN LÌ XÌ MAY MẮN 🧧</h1>
+	<header id="header">
+		<h1>Mùa Tri Ân</h1>
+		<p class="e">20.11.2026</p>
+	</header>
 
-    <div class="grid-container" id="lixiGrid"></div>
 
-    <div id="scare-overlay">
-        <h2>THAM THẾ!!<br>CỨ THÍCH BẤM À?</h2>
-        <audio id="airhorn" src="https://www.myinstants.com/media/sounds/mlg-airhorn.mp3"></audio>
+	<div class="khungloingo">
+		<p class="chuloingo">Lời Thì Thầm</p>
+		<div class="vetmauloingo"></div>
+		<div class='khungchuloingo'>
+			<p id="loingo"></p>
+			<p class="chuki" id="chuki"></p>
+		</div>
+	</div>
+
+
+	<div class="khungkiniem">
+		<p class="chukiniem">Góc Kỉ Niệm</p>
+		<div class=vetmaukiniem></div>
+		<div class="khungchia">
+			<div class='theanh'onclick="this.classList.toggle('xoay')">
+				<div class="thexoay">
+					<div class="truoc"><img src="https://png.pngtree.com/thumb_back/fh260/background/20240518/pngtree-scenic-view-of-moon-in-sky-at-night-image_15795812.jpg"></div>
+					<div class="sau">Chữ</div>
+				</div>
+			</div>
+			<div class='theanh'onclick="this.classList.toggle('xoay')">
+				<div class="thexoay">
+					<div class="truoc"><img src="https://png.pngtree.com/thumb_back/fh260/background/20240518/pngtree-scenic-view-of-moon-in-sky-at-night-image_15795812.jpg"></div>
+					<div class="sau">Chữ</div>
+				</div>
+			</div>
+			<div class='theanh'onclick="this.classList.toggle('xoay')">
+				<div class="thexoay">
+					<div class="truoc"><img src="https://png.pngtree.com/thumb_back/fh260/background/20240518/pngtree-scenic-view-of-moon-in-sky-at-night-image_15795812.jpg"></div>
+					<div class="sau">Chữ</div>
+				</div>
+			</div>
+			<div class='theanh'onclick="this.classList.toggle('xoay')">
+				<div class="thexoay">
+					<div class="truoc"><img src="https://png.pngtree.com/thumb_back/fh260/background/20240518/pngtree-scenic-view-of-moon-in-sky-at-night-image_15795812.jpg"></div>
+					<div class="sau">Chữ</div>
+				</div>
+			</div>
+			<div class='theanh'onclick="this.classList.toggle('xoay')">
+				<div class="thexoay">
+					<div class="truoc"><img src="https://png.pngtree.com/thumb_back/fh260/background/20240518/pngtree-scenic-view-of-moon-in-sky-at-night-image_15795812.jpg"></div>
+					<div class="sau">Chữ</div>
+				</div>
+			</div>
+			<div class='theanh'onclick="this.classList.toggle('xoay')">
+				<div class="thexoay">
+					<div class="truoc"><img src="https://png.pngtree.com/thumb_back/fh260/background/20240518/pngtree-scenic-view-of-moon-in-sky-at-night-image_15795812.jpg"></div>
+					<div class="sau">Chữ</div>
+				</div>
+			</div>
+			<div class='theanh'onclick="this.classList.toggle('xoay')">
+				<div class="thexoay">
+					<div class="truoc"><img src="https://png.pngtree.com/thumb_back/fh260/background/20240518/pngtree-scenic-view-of-moon-in-sky-at-night-image_15795812.jpg"></div>
+					<div class="sau">Chữ</div>
+				</div>
+			</div>
+			<div class='theanh'onclick="this.classList.toggle('xoay')">
+				<div class="thexoay">
+					<div class="truoc"><img src="https://png.pngtree.com/thumb_back/fh260/background/20240518/pngtree-scenic-view-of-moon-in-sky-at-night-image_15795812.jpg"></div>
+					<div class="sau">Chữ</div>
+				</div>
+			</div>
+			<div class='theanh'onclick="this.classList.toggle('xoay')">
+				<div class="thexoay">
+					<div class="truoc"><img src="https://png.pngtree.com/thumb_back/fh260/background/20240518/pngtree-scenic-view-of-moon-in-sky-at-night-image_15795812.jpg"></div>
+					<div class="sau">Chữ</div>
+				</div>
+			</div>
+			<div class='theanh'onclick="this.classList.toggle('xoay')">
+				<div class="thexoay">
+					<div class="truoc"><img src="https://png.pngtree.com/thumb_back/fh260/background/20240518/pngtree-scenic-view-of-moon-in-sky-at-night-image_15795812.jpg"></div>
+					<div class="sau">Chữ</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="khungbangloinhan">
+		<p class="chubangloinhan">Bảng Lời Nhắn</p>
+		<div class="vetmaubangloinhan"></div>
+		<div class="khunggo">
+			<div class='khungchia2'>
+				<div class="togiay">
+					<div class="ghim"></div>
+					<p>Cô đã giúp em tìm thấy đam mê trong học tập.Cảm ơn cô rất nhiều</p>
+        			<div class="khungten">
+            			<b>-Nguyễn Văn Thúc</b>
+            		</div>
+				</div>
+				<div class="togiay">
+					<div class="ghim"></div>
+					<p>Cô đã giúp em tìm thấy đam mê trong học tập.Cảm ơn cô rất nhiều</p>
+        			<div class="khungten">
+            			<b>-Nguyễn Văn Thúc</b>
+            		</div>
+				</div>
+				<div class="togiay">
+					<div class="ghim"></div>
+					<p>Cô đã giúp em tìm thấy đam mê trong học tập.Cảm ơn cô rất nhiều</p>
+        			<div class="khungten">
+            			<b>-Nguyễn Văn Thúc</b>
+            		</div>
+				</div>
+				<div class="togiay">
+					<div class="ghim"></div>
+					<p>Cô đã giúp em tìm thấy đam mê trong học tập.Cảm ơn cô rất nhiều</p>
+        			<div class="khungten">
+            			<b>-Nguyễn Văn Thúc</b>
+            		</div>
+				</div>
+				<div class="togiay">
+					<div class="ghim"></div>
+					<p>Cô đã giúp em tìm thấy đam mê trong học tập.Cảm ơn cô rất nhiều</p>
+        			<div class="khungten">
+            			<b>-Nguyễn Văn Thúc</b>
+            		</div>
+				</div>
+				<div class="togiay">
+					<div class="ghim"></div>
+					<p>Cô đã giúp em tìm thấy đam mê trong học tập.Cảm ơn cô rất nhiều</p>
+        			<div class="khungten">
+            			<b>-Nguyễn Văn Thúc</b>
+            		</div>
+				</div>
+				<div class="togiay">
+					<div class="ghim"></div>
+					<p>Cô đã giúp em tìm thấy đam mê trong học tập.Cảm ơn cô rất nhiều</p>
+        			<div class="khungten">
+            			<b>-Nguyễn Văn Thúc</b>
+            		</div>
+				</div>
+				<div class="togiay">
+					<div class="ghim"></div>
+					<p>Cô đã giúp em tìm thấy đam mê trong học tập.Cảm ơn cô rất nhiều</p>
+        			<div class="khungten">
+            			<b>-Nguyễn Văn Thúc</b>
+            		</div>
+				</div>
+				<div class="togiay">
+					<div class="ghim"></div>
+					<p>Cô đã giúp em tìm thấy đam mê trong học tập.Cảm ơn cô rất nhiều</p>
+        			<div class="khungten">
+            			<b>-Nguyễn Văn Thúc</b>
+            		</div>
+				</div>
+				<div class="togiay">
+					<div class="ghim"></div>
+					<p>Cô đã giúp em tìm thấy đam mê trong học tập.Cảm ơn cô rất nhiều</p>
+        			<div class="khungten">
+            			<b>-Nguyễn Văn Thúc</b>
+            		</div>
+				</div>
+				<div class="togiay">
+					<div class="ghim"></div>
+					<p>Cô đã giúp em tìm thấy đam mê trong học tập.Cảm ơn cô rất nhiều</p>
+        			<div class="khungten">
+            			<b>-Nguyễn Văn Thúc</b>
+            		</div>
+				</div>
+				<div class="togiay">
+					<div class="ghim"></div>
+					<p>Cô đã giúp em tìm thấy đam mê trong học tập.Cảm ơn cô rất nhiều</p>
+        			<div class="khungten">
+            			<b>-Nguyễn Văn Thúc</b>
+            		</div>
+				</div>
+				<div class="togiay">
+					<div class="ghim"></div>
+					<p>Cô đã giúp em tìm thấy đam mê trong học tập.Cảm ơn cô rất nhiều</p>
+        			<div class="khungten">
+            			<b>-Nguyễn Văn Thúc</b>
+            		</div>
+				</div>
+				<div class="togiay">
+					<div class="ghim"></div>
+					<p>Cô đã giúp em tìm thấy đam mê trong học tập.Cảm ơn cô rất nhiều</p>
+        			<div class="khungten">
+            			<b>-Nguyễn Văn Thúc</b>
+            		</div>
+				</div>
+				<div class="togiay">
+					<div class="ghim"></div>
+					<p>Cô đã giúp em tìm thấy đam mê trong học tập.Cảm ơn cô rất nhiều</p>
+        			<div class="khungten">
+            			<b>-Nguyễn Văn Thúc</b>
+            		</div>
+				</div>
+			</div>		
+		</div>
+	</div>
+	<audio id="nhac" src="nhac.mp3" loop></audio>
+	<button onclick="battat()">🎵</button>
+	<footer>
+    <div class="footer-container">
+        <div class="footer-title">Về Nhóm 2</div>
+        <div class="footer-line"></div>
+
+        <div class="footer-content">
+            Trang web được thực hiện bởi <b>Nhóm 2 - Lớp 12C1</b><br>
+            Nhân dịp kỷ niệm ngày Nhà Giáo Việt Nam 20/11.<br>
+            Với tất cả sự biết ơn và trân trọng gửi đến Thầy Cô.
+        </div>
+
+        <div class="footer-update">
+            Cập nhật lần cuối: 20/11/2025
+        </div>
     </div>
+	</footer>
+	<script>
+		function iconroi() {
+			const a=Math.random()*5+10;
+			const b=document.createElement("div");
+			let c=document.getElementById("header");
+			b.className="icon";b.innerText="🌸";
+			b.style.left=Math.random()*100 +"vw";
+			b.style.animationDuration=a+"s";
+			b.style.opacity=Math.random()*0.8+0.3;
+			c.appendChild(b);
+			setTimeout(()=>{b.remove()},a*1000);
 
-    <script>
-        // 3 bao: 1 cái 20k, 2 cái đuổi
-        const prizes = ["20.000 VNĐ", "Đừng mở nữa!", "Hết tiền rồi!"];
-        const grid = document.getElementById('lixiGrid');
-        const scareOverlay = document.getElementById('scare-overlay');
-        const airhorn = document.getElementById('airhorn');
-        let clickCount = 0;
+		}
+		setInterval(iconroi,300);
 
-        // Trộn ngẫu nhiên
-        const shuffled = [...prizes].sort(() => Math.random() - 0.5);
 
-        for (let i = 0; i < 3; i++) {
-            const card = document.createElement('div');
-            card.className = 'lixi-card';
-            
-            const content = document.createElement('div');
-            content.className = 'lixi-content';
-            content.innerText = shuffled[i];
-            
-            card.appendChild(content);
-            card.addEventListener('click', function() {
-                if (!this.classList.contains('opened')) {
-                    this.classList.add('opened');
-                    clickCount++;
+		const chu="Thời gian có thể làm mờ đi những dòng phấn trắng trên bảng đen, nhưng không thể xóa nhòa những ân tình thầy cô đã gửi gắm vào chúng em...\n\n  Hôm nay, khi màn đêm dần buông, ánh đèn lớp học đã tắt, chúng em nhận ra rằng: những năm tháng ấy không chỉ là kiến thức, mà còn là tình thương, là sự quan tâm, là những lời động viên mà Thầy Cô đã dành cho chúng em.\n\n  Trang web này không chỉ là lời chúc mừng, mà còn là tấm lòng biết ơn sâu sắc mà chúng em muốn gửi đến Thầy Cô. Mỗi dòng chữ, mỗi hình ảnh đều chứa đựng những kỷ niệm đẹp đẽ và tình cảm chân thành nhất.\n\n  Xin Thầy Cô hãy dành chút thời gian để cùng chúng em nhìn lại những khoảnh khắc đáng nhớ, để thấy rằng công sức Thầy Cô bỏ ra đã không uổng phí, đã nảy mầm trong trái tim mỗi học trò.";
+		const loingo=document.getElementById('loingo');
+		let i=0;
+		function tuvietchu() {
+			loingo.innerText=chu.slice(0,i++);
+			if(i<chu.length) {
+				setTimeout(tuvietchu,48);
+			}
+			else {
+				setTimeout(hienchu,500);
+			}
+		}
+		setTimeout(tuvietchu,6000);
+		function hienchu() {
+			const a=document.getElementById('chuki');
+			a.innerText="Tập thể lớp 12C1";
+		}
+		const mau=[
+            '#FBCFE8', // pink-200
+            '#BFDBFE', // blue-200
+            '#BBF7D0', // green-200
+            '#DDD6FE', // purple-200
+            '#FECACA', // red-200
+            '#99F6E4', // teal-200
+            '#C7D2FE', // indigo-200
+            '#D9F99D'  // lime-200
+		];
+    	const d=document.querySelectorAll('.togiay');
+    	d.forEach(e =>{
+    		e.style.backgroundColor=mau[Math.floor(Math.random()*mau.length)];
+    		e.style.rotate=`${Math.floor(Math.random()*11)-5}deg`;
+    	})
 
-                    // Mở đến cái thứ 2 là bị hù ngay
-                    if (clickCount >= 2) {
-                        setTimeout(triggerScare, 400); // Đợi lật bao xong là hù
-                    }
-                }
-            });
-            grid.appendChild(card);
-        }
 
-        function triggerScare() {
-            scareOverlay.style.display = 'flex';
-            scareOverlay.classList.add('strobe-active');
-            airhorn.currentTime = 0;
-            airhorn.play().catch(() => {
-                console.log("Browser blocked sound. Need user interaction.");
-            });
-            
-            // Hù trong 2.5 giây
-            setTimeout(() => {
-                scareOverlay.style.display = 'none';
-                scareOverlay.classList.remove('strobe-active');
-                alert("Năm mới vui vẻ! Bớt tham nha bạn hiền! 😂");
-            }, 2500);
-        }
-    </script>
-</body>
-</html>let coin=document.getElementById("coin");
-coin.onclick=()=>{
-  let res=Math.random()<0.5?"Toán":"Lý";
-  coin.style.transform="rotateY(720deg)";
-  setTimeout(()=>{
-    coin.textContent=res;
-    coin.style.transform="rotateY(0deg)";
-  },1000);
-};
-</script>
+    	function battat() {
+    		const f=document.getElementById('nhac');
+    		f.volume=1;
+    		if(f.pause) f.play();
+    		else f.pause();
+    	}
+	</script>
 </body>
 </html>
